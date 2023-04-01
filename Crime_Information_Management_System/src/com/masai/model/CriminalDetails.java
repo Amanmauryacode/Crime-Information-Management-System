@@ -4,6 +4,7 @@ public class CriminalDetails {
 
 	private int criminal_id;
 	private String name;
+	private String dob;
 	private String gender;
 	private String identifying_mark;
 	private String first_arrest_date;
@@ -13,11 +14,12 @@ public class CriminalDetails {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CriminalDetails(int criminal_id, String name, String gender, String identifying_mark,
+	public CriminalDetails(int criminal_id, String name, String dob, String gender, String identifying_mark,
 			String first_arrest_date, String arrestedFromPsArea) {
 		super();
 		this.criminal_id = criminal_id;
 		this.name = name;
+		this.dob = dob;
 		this.gender = gender;
 		this.identifying_mark = identifying_mark;
 		this.first_arrest_date = first_arrest_date;
@@ -38,6 +40,14 @@ public class CriminalDetails {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getDob() {
+		return dob;
+	}
+
+	public void setDob(String dob) {
+		this.dob = dob;
 	}
 
 	public String getGender() {
@@ -74,10 +84,12 @@ public class CriminalDetails {
 
 	@Override
 	public String toString() {
-		return "criminal_id=" + criminal_id + ", name=" + name + ", gender=" + gender
+		return "criminal_id=" + criminal_id + ", name=" + name + ", dob=" + dob + ", gender=" + gender
 				+ ", identifying_mark=" + identifying_mark + ", first_arrest_date=" + first_arrest_date
-				+ ", arrestedFromPsArea=" + arrestedFromPsArea + "";
+				+ ", arrestedFromPsArea=" + arrestedFromPsArea + "\n";
 	}
+
+	
 	
 	
 	

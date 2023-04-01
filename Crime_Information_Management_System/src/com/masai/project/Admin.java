@@ -43,17 +43,42 @@ public class Admin {
 			System.out.println("8. Delete Criminal Using Criminal ID");
 			
 			opt = sc.nextInt();
+			AdminUseCase admin = new AdminUseCase();
+			
 			switch (opt) {
 			
 			case 0 : System.out.println("Thanku for visiting...");
 			break;
 			
-			case 1: (new AdminUseCase()).addCrimeDetails(sc);
+			case 1: {
+				admin.addCrimeDetails(sc);
+				System.out.println();
+			}
 			break;
 			
-			case 2 : (new AdminUseCase()).updateCrimeDetailsUsingCrimeId(sc);
+			case 2 : {
+				admin.updateCrimeDetailsUsingCrimeId(sc);
+				System.out.println();
+			}
 			break;
 			
+			case 3 : {
+				admin.addCriminalDetails(sc);
+				System.out.println();
+			}
+			break;
+			
+			case 4 :{
+				admin.updateCriminalDetailsUsingCriminalID(sc);
+				System.out.println();
+			}
+			break;
+			
+			case 5 : {
+				admin.assignCriminalToCrime(sc);
+				System.out.println();
+			}
+			break;
 			
 			default: System.err.println("Enter valid option no. ");
 			
