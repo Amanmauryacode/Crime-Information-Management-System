@@ -80,6 +80,23 @@ public class Admin {
 			}
 			break;
 			
+			case 6 : {
+				admin.removeCriminalFromCrime(sc);
+				System.out.println();
+			}
+			break;
+			
+			case 7 : {
+				admin.deleteCrimeByUsingCrimeID(sc);
+				System.out.println();
+			}
+			break;
+			
+			case 8 :{
+				admin.deleteCriminalByUsingCriminalID(sc);
+				System.out.println();
+			}
+			break;
 			default: System.err.println("Enter valid option no. ");
 			
 			}

@@ -224,7 +224,65 @@ public class AdminUseCase {
 		} catch (CrimeException e) {
 			System.err.println(e.getMessage());
 		}
-		 
+		
+	}
+	
+	public void removeCriminalFromCrime(Scanner sc) {
+		
+		System.out.print("Enter Criminal Id To Remove From Crime : ");
+		int criminal_id = sc.nextInt();
+		
+		
+		System.out.print("Enter Crime ID ");
+		int crime_id = sc.nextInt();
+		
+		
+		AdminDao dao = new AdminDaoImpl();
+		
+		try {
+			String msg = dao.removeCriminalFromCrime(criminal_id, crime_id);
+			System.out.println(msg);
+		} catch (CriminalException e) {
+			System.err.println(e.getMessage());
+		}
+		
+	}
+	
+	public void deleteCrimeByUsingCrimeID(Scanner sc) {
+		
+		System.out.print("Enter Crime ID To Delete From Record : ");
+		int id = sc.nextInt();
+		
+		AdminDao dao = new AdminDaoImpl();
+		try {
+			String msg = dao.deleteCrimeByUsingCrimeID(id);
+			if(msg.equals("Data Deleted Sucessfully...")) {
+				System.out.println(msg);
+			}else
+				System.err.println(msg);
+		} catch (CrimeException e) {
+			System.err.println(e.getMessage());
+		}
+				
+	}
+	public void deleteCriminalByUsingCriminalID(Scanner sc) {
+		
+		System.out.print("Enter Crime ID To Delete From Record : ");
+		int id = sc.nextInt();
+		
+		AdminDao dao = new AdminDaoImpl();
+		
+			try {
+				String msg = dao.deleteCriminalByUsingCriminalID(id);
+				if(msg.equals("Data Deleted Sucessfully...")) {
+					System.out.println(msg);
+				}else
+					System.err.println(msg);
+			} catch (CriminalException e) {
+				System.err.println(e.getMessage());
+			}
+			
+		
 		
 	}
 	

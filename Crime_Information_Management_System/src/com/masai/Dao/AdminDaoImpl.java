@@ -184,6 +184,81 @@ public class AdminDaoImpl implements AdminDao{
 		
 		return msg;
 	}
+
+	@Override
+	public String removeCriminalFromCrime(int Criminal_ID, int Crime_ID) throws CriminalException{
+		String msg = "Criminal Not Remove From Crime...";
+		
+		try(Connection con = DBUtil.provideConnection()){
+			
+			PreparedStatement ps = con.prepareStatement("delete from crime_criminal_details where criminal_id = ? AND crime_ID = ?");
+			ps.setInt(1, Criminal_ID);
+			ps.setInt(2, Crime_ID);
+			
+			int x = ps.executeUpdate();
+			
+			if(x>0) {
+				msg = "Data Sucessfully Removed From Records...";
+			}else {
+				throw new CriminalException("Criminal Not Assign Crime With Id : "+Crime_ID);
+			}
+			
+		} catch (SQLException e) {
+			msg = e.getMessage();
+		}
+		
+		
+		return msg;
+	}
+
+	@Override
+	public String deleteCrimeByUsingCrimeID(int Crime_ID) throws CrimeException {
+		String msg = "Data Not Deleted...";
+		
+		try(Connection con = DBUtil.provideConnection()) {
+			
+			PreparedStatement ps = con.prepareStatement("delete from crime_details where crime_id = ?");
+			
+			ps.setInt(1, Crime_ID);
+			int x = ps.executeUpdate();
+			
+			if(x>0) {
+				msg = "Data Deleted Sucessfully...";
+			}else {
+				throw new CrimeException("Crime Not Exist With Crime ID : "+Crime_ID);
+			}
+			
+		} catch (SQLException e) {
+			msg = e.getMessage();
+		}
+		
+		return msg;
+	}
+
+	@Override
+	public String deleteCriminalByUsingCriminalID(int Criminal_ID) throws CriminalException {
+		String msg = "Data Not Deleted...";
+		
+		try(Connection con = DBUtil.provideConnection()) {
+			
+			PreparedStatement ps = con.prepareStatement("delete from Criminal_details where criminal_id = ?");
+			
+			ps.setInt(1, Criminal_ID);
+			int x = ps.executeUpdate();
+			
+			if(x>0) {
+				msg = "Data Deleted Sucessfully...";
+			}else {
+				throw new CriminalException("Criminal Not Exist With Criminal Id : "+Criminal_ID);
+			}
+			
+		} catch (SQLException e) {
+			msg = e.getMessage();
+		}
+		
+		return msg;
+		
+	}
 	
 	
 }

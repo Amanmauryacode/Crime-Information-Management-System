@@ -16,4 +16,10 @@ public interface AdminDao {
 	public String updateCriminalDetailsUsingCriminalID(CriminalDetails cd) throws CriminalException;
 	
 	public String assignCriminalToCrime(int Criminal_ID,int Crime_ID) throws CriminalException,CrimeException;
+	
+	public String removeCriminalFromCrime(int Criminal_ID,int Crime_ID) throws CriminalException;
+	
+	public String deleteCrimeByUsingCrimeID(int Crime_ID) throws CrimeException;
+	
+	public String deleteCriminalByUsingCriminalID(int Criminal_ID) throws CriminalException;
 }
