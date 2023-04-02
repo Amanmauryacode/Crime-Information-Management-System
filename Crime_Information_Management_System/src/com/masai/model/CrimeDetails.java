@@ -74,8 +74,8 @@ public class CrimeDetails {
 
 	@Override
 	public String toString() {
-		return "crime_id=" + crime_id + ", crime_type=" + crime_type + ", description=" + description
-				+ ", ps_area=" + ps_area + ", Date=" + Date + ", nameOfVictim=" + nameOfVictim + "\n";
+		return "crime_id : " + crime_id + ",\ncrime_type : " + crime_type + ", \ndescription : " + description
+				+ ", \nps_area : " + ps_area + ", \nDate : " + Date + ", \nnameOfVictim : " + nameOfVictim + "\n";
 	}
 	
 	

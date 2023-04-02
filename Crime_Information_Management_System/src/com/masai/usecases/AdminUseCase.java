@@ -8,6 +8,7 @@ import com.masai.exception.CrimeException;
 import com.masai.exception.CriminalException;
 import com.masai.model.CrimeDetails;
 import com.masai.model.CriminalDetails;
+import com.masai.project.Main;
 
 public class AdminUseCase {
 
@@ -46,13 +47,13 @@ public class AdminUseCase {
 		try {
 			String msg = dao.addCrimeDetails(crime);
 			if(msg.equals("Data Sucessfully Inserted into Crime Table ...")) {
-				System.out.println(msg);		
+				System.out.println(Main.ANSI_GREEN+msg);		
 			}else {
-				System.err.println(msg);
+				System.err.println(Main.ANSI_RED+msg);
 			}
 			System.out.println();
 		} catch (CrimeException e) {
-			System.err.println(e.getMessage());
+			System.err.println(Main.ANSI_RED+e.getMessage());
 		}
 		
 	}
@@ -93,12 +94,12 @@ public class AdminUseCase {
 		try {
 			String msg =  dao.updateCrimeDetailsUsingCrimeId(crime);
 			if(msg.equals("Data Sucessfully Updated...")) {
-				System.out.println(msg);
+				System.out.println(Main.ANSI_GREEN+msg);
 			}else {
-				System.err.println(msg);
+				System.err.println(Main.ANSI_RED+msg);
 			}
 		} catch (CrimeException e) {
-			System.err.println(e.getMessage());
+			System.err.println(Main.ANSI_RED+e.getMessage());
 			
 		}
 		
@@ -145,12 +146,12 @@ public class AdminUseCase {
 		try {
 		 	String msg = dao.addCriminalDetails(cd);
 		 	if(msg.equals("Data Sucessfully Updated..")) {
-		 		System.out.println(msg);
+		 		System.out.println(Main.ANSI_GREEN+msg);
 		 	}else {
-		 		System.err.println(msg);
+		 		System.err.println(Main.ANSI_RED+msg);
 		 	}
 		} catch (CriminalException e) {
-			System.err.println(e.getMessage());
+			System.err.println(Main.ANSI_RED+e.getMessage());
 		}
 		
 	}
@@ -196,12 +197,12 @@ public class AdminUseCase {
 			String msg = dao.updateCriminalDetailsUsingCriminalID(cd);
 			
 			if(msg.equals("Data Sucessfully Updated")) {
-				System.out.println(msg);
+				System.out.println(Main.ANSI_GREEN +msg);
 			}else {
-				System.err.println(msg);
+				System.err.println(Main.ANSI_RED+msg);
 			}
 		} catch (CriminalException e) {
-			System.err.println(e.getMessage());
+			System.err.println(Main.ANSI_RED+e.getMessage());
 		}
 		
 	}
@@ -218,11 +219,11 @@ public class AdminUseCase {
 		
 		 try {
 			String msg = dao.assignCriminalToCrime(Criminal_id, Crime_id);
-			System.out.println(msg);
+			System.out.println(Main.ANSI_GREEN +msg);
 		} catch (CriminalException e) {
-			System.err.println(e.getMessage());
+			System.err.println(Main.ANSI_RED+e.getMessage());
 		} catch (CrimeException e) {
-			System.err.println(e.getMessage());
+			System.err.println(Main.ANSI_RED+e.getMessage());
 		}
 		
 	}
@@ -241,9 +242,9 @@ public class AdminUseCase {
 		
 		try {
 			String msg = dao.removeCriminalFromCrime(criminal_id, crime_id);
-			System.out.println(msg);
+			System.out.println(Main.ANSI_GREEN+msg);
 		} catch (CriminalException e) {
-			System.err.println(e.getMessage());
+			System.err.println(Main.ANSI_RED+e.getMessage());
 		}
 		
 	}
@@ -257,11 +258,11 @@ public class AdminUseCase {
 		try {
 			String msg = dao.deleteCrimeByUsingCrimeID(id);
 			if(msg.equals("Data Deleted Sucessfully...")) {
-				System.out.println(msg);
+				System.out.println(Main.ANSI_GREEN+msg);
 			}else
-				System.err.println(msg);
+				System.err.println(Main.ANSI_RED+msg);
 		} catch (CrimeException e) {
-			System.err.println(e.getMessage());
+			System.err.println(Main.ANSI_RED+e.getMessage());
 		}
 				
 	}
@@ -275,11 +276,11 @@ public class AdminUseCase {
 			try {
 				String msg = dao.deleteCriminalByUsingCriminalID(id);
 				if(msg.equals("Data Deleted Sucessfully...")) {
-					System.out.println(msg);
+					System.out.println(Main.ANSI_GREEN+msg);
 				}else
-					System.err.println(msg);
+					System.err.println(Main.ANSI_RED+msg);
 			} catch (CriminalException e) {
-				System.err.println(e.getMessage());
+				System.err.println(Main.ANSI_RED+e.getMessage());
 			}
 			
 		
