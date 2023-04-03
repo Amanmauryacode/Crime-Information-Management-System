@@ -1,2 +1,5 @@
 # -primo-ocean-5992
-![image](https://drive.google.com/file/d/1KzbJ7nIncrE5KCHzrU9Xyj9Q4WRS6N9u/view?usp=share_link<FILE_ID>)
+
+ER Diagram ---->
+
+![Untitled](https://user-images.githubusercontent.com/105871693/229475572-e7f424a4-8055-4920-9748-863802f1c567.png)
