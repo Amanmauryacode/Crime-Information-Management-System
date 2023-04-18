@@ -9,7 +9,7 @@ crime that happened in an area under a particular police station.
 - Public role
 
 ## Database 
-MYSql
+MySQL
 
 # TECH STACK
 
