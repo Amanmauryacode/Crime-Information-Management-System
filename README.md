@@ -2,7 +2,12 @@
 # Crime Information Management System
 
 The main objective of this system is to maintain and manage detailed information on the
-crime that happened in an area under a particular police station.
+a crime that happened in an area under a particular police station.
+
+## Setup for Running the Project
+- Open project ONLINE BANKING SYSTEM.
+- Create Database, tables into local system from SQL_TABLES.txt.
+- Download the .jar file according to your MySQL version from https://mvnrepository.com/artifact/mysql/mysql-connector-java.
 
 ## Users
 - Admin role
@@ -43,3 +48,15 @@ Flow Chart ---->
 ER Diagram ---->
 
 ![Untitled](https://user-images.githubusercontent.com/105871693/229475572-e7f424a4-8055-4920-9748-863802f1c567.png)
+
+## Feedback
+- - Your valuable feedback is greatly appreciated. You can reach out to me via the below medium
+
+## Portfolio
+- 👨‍💻 All of my projects are available at **[Portfolio](https://Amanmauryacode.github.io/)**
+## LinkedIn
+- **[LinkedIn](https://www.linkedin.com/in/aman-maurya-10b230203/)**
+## Author
+- Aman Maurya
+## Acknowledgments
+- Masai School
