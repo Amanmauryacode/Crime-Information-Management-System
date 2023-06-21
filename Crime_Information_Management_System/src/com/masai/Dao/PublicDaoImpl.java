@@ -6,7 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.masai.Utitlity.DBUtil;
@@ -75,8 +77,9 @@ public class PublicDaoImpl implements PublicDao{
 
 
 	@Override
-	public CriminalDetails getCriminalDetailsByCriminalName(String name) throws CriminalException {
-		CriminalDetails criminal = new CriminalDetails();
+	public List<CriminalDetails> getCriminalDetailsByCriminalName(String name) throws CriminalException {
+		
+		List<CriminalDetails> criminalList = new ArrayList<>();
 		try(Connection con = DBUtil.provideConnection()) {
 			
 			PreparedStatement ps = con.prepareStatement("select * from criminal_details where name = ?");
@@ -84,8 +87,10 @@ public class PublicDaoImpl implements PublicDao{
 			ps.setString(1, name);
 			ResultSet rs = ps.executeQuery();	
 			
-						
-			if(rs.next()) {
+			boolean flag = true;			
+			while(rs.next()) {
+				flag = false;
+				CriminalDetails criminal = new CriminalDetails();
 				criminal.setCriminal_id(rs.getInt(1));
 				criminal.setName(rs.getString(2));
 				criminal.setDob(rs.getString(3));
@@ -93,32 +98,34 @@ public class PublicDaoImpl implements PublicDao{
 				criminal.setIdentifying_mark(rs.getString(5));
 				criminal.setFirst_arrest_date(rs.getString(6));
 				criminal.setArrestedFromPsArea(rs.getString(7));
-			}else {
+				criminalList.add(criminal);
+			}
+			if(flag){
 				throw new CriminalException("Criminal Not Found With Name : "+name);
 			}
 		} catch (SQLException e) {
 			throw new CriminalException(e.getMessage());
 		}
 		
-		return criminal;
+		return criminalList;
 		
 	}
 
 
 	@Override
-	public CrimeDetails getCrimeDetailsByDescription(String desc) throws CrimeException {
-		CrimeDetails crime = new CrimeDetails();
+	public List<CrimeDetails> getCrimeDetailsByDescription(String desc) throws CrimeException {
 		
+		List<CrimeDetails> allCrime = new ArrayList<>();
 		try(Connection con = DBUtil.provideConnection()) {
 			
-			PreparedStatement ps = con.prepareStatement("select * from crime_details where description = ?");
-			ps.setString(1, desc);
-		    ResultSet rs = ps.executeQuery();
+			PreparedStatement ps = con.prepareStatement("select * from crime_details where description like '%"+desc+"%'");
 			
-		    if(rs.next()) {
-		    	
+		    ResultSet rs = ps.executeQuery();
+			boolean flag = true;
+		    while(rs.next()) {
+		    	flag = false;
 		    	DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-		    	
+		    	CrimeDetails crime = new CrimeDetails();
 		    	
 		    	crime.setCrime_id(rs.getInt(1));
 		    	crime.setCrime_type(rs.getString(2));
@@ -126,17 +133,53 @@ public class PublicDaoImpl implements PublicDao{
 		    	crime.setPs_area(rs.getString(4));
 		    	crime.setDate(df.format(rs.getDate(5)));
 		    	crime.setNameOfVictim(rs.getString(6));
-		 		    	
-		    }else {
-		    	throw new CrimeException("Crime Not Exist With Description : "+desc);
+		    	allCrime.add(crime); 	
 		    }
+		    if(flag)
+		    	throw new CrimeException("Crime Not Exist With Description : "+desc);
+		    
 		    
 		} catch (SQLException e) {
 			throw new CrimeException(e.getMessage());
 		}
 		
 		
-		return crime;
+		return allCrime;
+	}
+
+
+	@Override
+	public List<CrimeDetails> getCrimeDetailsByCrimeType(String type) throws CrimeException {
+		List<CrimeDetails> allCrime = new ArrayList<>();
+		try(Connection con = DBUtil.provideConnection()) {
+			
+			PreparedStatement ps = con.prepareStatement("select * from crime_details where crime_type like '%"+type+"%'");
+			
+		    ResultSet rs = ps.executeQuery();
+			boolean flag = true;
+		    while(rs.next()) {
+		    	flag = false;
+		    	DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		    	CrimeDetails crime = new CrimeDetails();
+		    	
+		    	crime.setCrime_id(rs.getInt(1));
+		    	crime.setCrime_type(rs.getString(2));
+		    	crime.setDescription(rs.getString(3));
+		    	crime.setPs_area(rs.getString(4));
+		    	crime.setDate(df.format(rs.getDate(5)));
+		    	crime.setNameOfVictim(rs.getString(6));
+		    	allCrime.add(crime); 	
+		    }
+		    if(flag)
+		    	throw new CrimeException("Crime Not Exist With Description : "+type);
+		    
+		    
+		} catch (SQLException e) {
+			throw new CrimeException(e.getMessage());
+		}
+		
+		
+		return allCrime;
 	}
 
 }

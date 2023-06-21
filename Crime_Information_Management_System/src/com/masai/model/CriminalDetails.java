@@ -84,9 +84,15 @@ public class CriminalDetails {
 
 	@Override
 	public String toString() {
-		return "\ncriminal_id : " + criminal_id + ", \nname : " + name + ", \ndob : " + dob + ", \ngender : " + gender
-				+ ", \nidentifying_mark : " + identifying_mark + ", \nfirst_arrest_date : " + first_arrest_date
-				+ ", \narrestedFromPsArea : " + arrestedFromPsArea + "\n";
+		return 	  "|-------------------------------------------------------------------------|\n"
+				+ "| criminal_id : " + criminal_id + ", \n"
+				+ "| name : " + name + ", \n"
+				+ "| dob : " + dob + ", \n"
+				+ "| gender : " + gender + ", \n"
+				+ "| identifying_mark : " + identifying_mark + ", \n"
+				+ "| first_arrest_date : " + first_arrest_date + ", \n"
+				+ "| arrestedFromPsArea : " + arrestedFromPsArea + "\n"
+				+ "|-------------------------------------------------------------------------|";
 	}
 
 	

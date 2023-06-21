@@ -1,5 +1,6 @@
 package com.masai.Dao;
 
+import java.util.List;
 import java.util.Map;
 
 import com.masai.exception.CrimeException;
@@ -13,7 +14,8 @@ public interface PublicDao {
 	
 	public Map<String, Integer> totalCrimeForEachCrimeTypeBetweenDate(String Date1, String Date2) throws CrimeException ;
 	
-	public CriminalDetails getCriminalDetailsByCriminalName(String name) throws CriminalException;
+	public List<CriminalDetails> getCriminalDetailsByCriminalName(String name) throws CriminalException;
 	
-	public CrimeDetails getCrimeDetailsByDescription(String desc) throws CrimeException;
+	public List<CrimeDetails> getCrimeDetailsByDescription(String desc) throws CrimeException;
+	public List<CrimeDetails> getCrimeDetailsByCrimeType(String type) throws CrimeException;
 }

@@ -268,7 +268,7 @@ public class AdminUseCase {
 	}
 	public void deleteCriminalByUsingCriminalID(Scanner sc) {
 		
-		System.out.print("Enter Crime ID To Delete From Record : ");
+		System.out.print("Enter Criminal ID To Delete From Record : ");
 		int id = sc.nextInt();
 		
 		AdminDao dao = new AdminDaoImpl();

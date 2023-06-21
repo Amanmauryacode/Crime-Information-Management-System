@@ -1,5 +1,6 @@
 package com.masai.usecases;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -27,11 +28,13 @@ public class PublicUseCase {
 
 		try {
 			Map<String, Integer> map = dao.totalCrimeForEachPSBetweenDate(date1, date2);
-
-			System.out.println(ANSI_GREEN+"Ps_Area        Total_Crime");
+			System.out.println();
+			System.out.println(ANSI_GREEN+"|----------------------------------------------|");
 			for (Map.Entry<String, Integer> set : map.entrySet()) {
-				System.out.println(ANSI_GREEN+set.getKey() + " ---- " + set.getValue());
+				System.out.println("| "+ANSI_GREEN+set.getKey() + "  ---->  " + set.getValue());
 			}
+			System.out.println(ANSI_GREEN+"|----------------------------------------------|");
+			
 		} catch (CrimeException e) {
 			System.err.println(Main.ANSI_RED+e.getMessage());
 		}
@@ -52,11 +55,13 @@ public class PublicUseCase {
 			Map<String, Integer> map = dao.totalCrimeForEachCrimeTypeBetweenDate(date1, date2);
 
 			System.out.println();
-
-			System.out.println(ANSI_GREEN+"Crime_type     Total_Count");
+			System.out.println();
+			System.out.println(ANSI_GREEN+"|----------------------------------------------|");
 			for (Map.Entry<String, Integer> set : map.entrySet()) {
-				System.out.println(ANSI_GREEN+set.getKey() + " ---- " + set.getValue());
+				System.out.println("| "+ANSI_GREEN+set.getKey() + "  ---->  " + set.getValue());
 			}
+			System.out.println(ANSI_GREEN+"|----------------------------------------------|");
+			
 		} catch (CrimeException e) {
 			System.err.println(Main.ANSI_RED+e.getMessage());
 		}
@@ -71,23 +76,45 @@ public class PublicUseCase {
 		PublicDao dao = new PublicDaoImpl();
 		
 		try {
-			CriminalDetails criminal = dao.getCriminalDetailsByCriminalName(name);
-			System.out.println(ANSI_GREEN+criminal);
+			List<CriminalDetails> criminalList = dao.getCriminalDetailsByCriminalName(name);
+			for(CriminalDetails criminal : criminalList) {
+				System.out.println(ANSI_GREEN+criminal);
+			}
+			
 		} catch (CriminalException e) {
 			System.err.println(Main.ANSI_RED+e.getMessage());
 		}
 	}
 	
 	public void getCrimeDetails(Scanner sc) {
-		
+		sc.nextLine();
 		System.out.print("Enter Crime Description : ");
-		String desc = sc.next();
+		String desc = sc.nextLine();
 		
 		PublicDao dao = new PublicDaoImpl();
 		
 		try {
-			CrimeDetails crime = dao.getCrimeDetailsByDescription(desc);
-			System.out.println(ANSI_GREEN+crime);
+			List<CrimeDetails> crimeList =  dao.getCrimeDetailsByDescription(desc);
+			for(CrimeDetails crime : crimeList) {
+				System.out.println(ANSI_GREEN+crime);
+			}
+		} catch (CrimeException e) {
+			System.err.println(Main.ANSI_RED+e.getMessage());
+		}
+	}
+	
+	public void getCrimeDetailsByType(Scanner sc) {
+		sc.nextLine();
+		System.out.print("Enter Crime Type : ");
+		String type = sc.nextLine();
+		
+		PublicDao dao = new PublicDaoImpl();
+		
+		try {
+			List<CrimeDetails> crimeList =  dao.getCrimeDetailsByCrimeType(type);
+			for(CrimeDetails crime : crimeList) {
+				System.out.println(ANSI_GREEN+crime);
+			}
 		} catch (CrimeException e) {
 			System.err.println(Main.ANSI_RED+e.getMessage());
 		}

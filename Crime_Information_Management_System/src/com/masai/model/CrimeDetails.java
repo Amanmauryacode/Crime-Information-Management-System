@@ -74,8 +74,14 @@ public class CrimeDetails {
 
 	@Override
 	public String toString() {
-		return "crime_id : " + crime_id + ",\ncrime_type : " + crime_type + ", \ndescription : " + description
-				+ ", \nps_area : " + ps_area + ", \nDate : " + Date + ", \nnameOfVictim : " + nameOfVictim + "\n";
+		return    "|---------------------------------------------------------|\n"
+				+ "| crime_id : " + crime_id + ",\n"
+				+ "| crime_type : " + crime_type + ", \n"
+				+ "| description : " + description + ", \n"
+				+ "| ps_area : " + ps_area + ", \n"
+				+ "| Date : " + Date + ", \n"
+				+ "| nameOfVictim : " + nameOfVictim + "\n"
+				+ "|---------------------------------------------------------|";
 	}
 	
 	
