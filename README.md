@@ -1,4 +1,4 @@
-
+![CIMS POSTER](https://github.com/Amanmauryacode/-primo-ocean-5992/assets/105871693/48c9a148-7b2c-4e50-af13-ddfda28a0f47)
 # Crime Information Management System
 
 The main objective of this system is to maintain and manage detailed information on the
