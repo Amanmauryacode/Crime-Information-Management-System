@@ -33,6 +33,12 @@ MySQL
 - Total Crime For Each Crime Type Between Date
 - Get Criminal Details By Criminal Name
 - Get Crime Details By Description
+- Get Crime Details By Crime Type
+
+
+Flow Chart ---->
+
+![CIMS Flow Chart](https://github.com/Amanmauryacode/-primo-ocean-5992/assets/105871693/a80050e2-5104-4f13-9d0e-8dfb281b4132)
 
 ER Diagram ---->
 
